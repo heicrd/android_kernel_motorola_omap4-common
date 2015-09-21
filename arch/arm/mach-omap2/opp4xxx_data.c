@@ -33,7 +33,7 @@
  * voltage dependent data for each VDD.
  */
 
- *	Stock CM12 Reference voltage
+ /*	Stock CM12 Reference voltage
 #define OMAP4430_VDD_MPU_OPP50_UV		1025000		300Mhz
 #define OMAP4430_VDD_MPU_OPP100_UV		1200000		600Mhz
 #define OMAP4430_VDD_MPU_OPPTURBO_UV		1325000		800Mhz
@@ -114,9 +114,9 @@ struct omap_volt_data omap443x_vdd_iva_volt_data[] = {
 #define OMAP4430_VDD_CORE_OPP100_UV		1127000
 
 struct omap_volt_data omap443x_vdd_core_volt_data[] = {
-	VOLT_DATA_DEFINE(OMAP4430_VDD_CORE_OPP50_UV, 0, OMAP44XX_CONTROL_FUSE_CORE_OPP50, 0xf4, 0x0c, OMAP_ABB_NONE),
-	VOLT_DATA_DEFINE(OMAP4430_VDD_CORE_OPP100_UV, 0, OMAP44XX_CONTROL_FUSE_CORE_OPP100, 0xf9, 0x16, OMAP_ABB_NONE),
-	VOLT_DATA_DEFINE(0, 0, 0, 0, 0, 0),
+	VOLT_DATA_DEFINE(OMAP4430_VDD_CORE_OPP50_UV, 0, OMAP44XX_CONTROL_FUSE_CORE_OPP50, 0xf4, 0x0c, OMAP_ABB_NONE, 0),
+	VOLT_DATA_DEFINE(OMAP4430_VDD_CORE_OPP100_UV, 0, OMAP44XX_CONTROL_FUSE_CORE_OPP100, 0xf9, 0x16, OMAP_ABB_NONE, 0),
+	VOLT_DATA_DEFINE(0, 0, 0, 0, 0, 0, 0),
 };
 
 /* Dependency of domains are as follows for OMAP4430 (OPP based):
@@ -463,7 +463,6 @@ int __init omap4_opp_init(void)
 #ifdef CONFIG_USE_14_CLOCK
 			omap4_mpu_opp_enable(1400000000);
 #endif
-		}
 		if (!trimmed)
 			pr_info("This is DPLL un-trimmed SOM. OPP is limited at 1.2 GHz\n");
 		if (omap4_has_mpu_1_5ghz() && trimmed)
