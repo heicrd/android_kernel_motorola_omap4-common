@@ -454,7 +454,7 @@ int __init omap4_opp_init(void)
 	}
 
 	if (!r) {
-		if (omap4_has_mpu_1_2ghz())
+		if (omap4_has_mpu_1_2ghz()) {
 			omap4_mpu_opp_enable(1200000000);
 
 #ifdef CONFIG_USE_13_CLOCK
@@ -463,6 +463,7 @@ int __init omap4_opp_init(void)
 #ifdef CONFIG_USE_14_CLOCK
 			omap4_mpu_opp_enable(1400000000);
 #endif
+		}
 		if (!trimmed)
 			pr_info("This is DPLL un-trimmed SOM. OPP is limited at 1.2 GHz\n");
 		if (omap4_has_mpu_1_5ghz() && trimmed)
